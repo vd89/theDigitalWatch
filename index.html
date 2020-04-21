@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Orbitron&display=swap');
+    body{
+        
+        color: #17d4fe;
+    }
+    .clock{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        font-size: 60px;
+        font-family: 'Orbitron', sans-serif;
+    }
+</style>
+<body>
+    <div class="clock" id="myClockDisplay" onload="showTime()">
+    </div>    
+</body>
+<script>
+    function showTime() {
+        var date = new Date()
+        var h = date.getHours()
+        var m = date.getMinutes()
+        var s = date.getSeconds()
+        var session = "AM"
+
+        if (h ==0) {
+            h =12
+        }
+        if (h>12) {
+            h = h-12
+            session = 'PM'
+        }
+        h = (h<10) ? "0" +h:h
+        m =(m<10) ? "0" +m :m
+        s = (s<10) ? "0" + s:s
+        const getBg = () => {
+                var ltr = "0123456789ABCDEF"
+            var color = "#"
+            for (let i = 0; i < 6; i++) {
+                color += ltr[Math.floor(Math.random() * 16)]
+            }
+            return color
+            }
+                
+
+     
+
+        var time = `${h}:${m}:${s} ${session}`
+        document.getElementById('myClockDisplay').innerHTML = time
+        setTimeout(showTime,500)
+        document.body.style.backgroundColor = getBg()
+        document.body.style.color = getBg()
+           
+    }
+    showTime()
+    
+</script>
+</html>
