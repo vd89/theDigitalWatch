@@ -12,7 +12,7 @@ window.onload = function () {
     btnStart.onclick = function () {
         clearInterval(Interval)
         Interval = setInterval(startTimer,10)
-        console.log(Interval);
+        // console.log(Interval);
     }
     btnStop.onclick = function () {
         clearInterval(Interval)
